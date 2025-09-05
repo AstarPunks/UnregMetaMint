@@ -25,3 +25,15 @@ for i in {1..100}; do
 done
 ```
 
+ * 最大1時間40分稼働する
+
+```
+for i in {1..100}; do
+    delay=$(( RANDOM % 60 ))   # 0〜59秒のランダム遅延
+    echo "Run $i: waiting $delay sec..."
+    sleep "$delay"
+    python3 UnregMetaMint.py
+    sleep $((60 - delay))
+done
+```
+
